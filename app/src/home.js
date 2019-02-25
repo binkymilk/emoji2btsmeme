@@ -2,6 +2,7 @@ import React from 'react'
 
 import Header from './Header.js'
 import EmojiSelection from './EmojiSelection.js'
+import PhotoGallery from './PhotoGallery.js'
 
 class Home extends React.Component {
 	render () {
@@ -9,6 +10,7 @@ class Home extends React.Component {
 			<div>
 				<Header />
 				<EmojiSelection />
+				<PhotoGallery />
 			</div>
 		)
 	}

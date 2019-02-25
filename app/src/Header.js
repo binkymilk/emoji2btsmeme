@@ -7,8 +7,8 @@ class Header extends React.Component {
 		return (
 			<Grid columns={12} className={this.props.className}>
 				<Cell width={1} />
-				<Cell width={10}>
-					<h2>emoji2btsmeme</h2>
+				<Cell width={2}>
+					<h2>Emoji to BTS Meme</h2>
 				</Cell>
 				<Cell width={1} />
 			</Grid>
