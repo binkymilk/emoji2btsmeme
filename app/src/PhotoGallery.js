@@ -16,13 +16,13 @@ class PhotoGallery extends React.Component {
 			{ src: images['images.jpeg'], width: 5, height: 3 },
 			{ src: images['IMG_20190114_113616.jpg'], width: 5, height: 3 },
 			{ src: images['IMG_20190114_223111.jpg'], width: 2, height: 2 },
-			{ src: images['IMG_20190115_190845.jpg'], width: 4, height: 3 },
-			{ src: images['IMG_20190116_072947.jpg'], width: 4, height: 3 },
-			{ src: images['IMG_20190117_221716.jpg'], width: 2, height: 2 },
+			{ src: images['IMG_20190115_190845.jpg'], width: 4.5, height: 3 },
+			{ src: images['IMG_20190116_072947.jpg'], width: 4.5, height: 3 },
+			{ src: images['IMG_20190117_221716.jpg'], width: 2.25, height: 2 },
 			{ src: images['IMG_20190118_012120.jpg'], width: 2, height: 2 },
-			{ src: images['IMG_20190118_165806.jpg'], width: 2, height: 3 },
+			{ src: images['IMG_20190118_165806.jpg'], width: 2, height: 2 },
 			{ src: images['IMG_20190119_113138.jpg'], width: 2, height: 2 },
-			{ src: images['IMG_20190120_003906.jpg'], width: 4, height: 3 },
+			{ src: images['IMG_20190120_003906.jpg'], width: 3.5, height: 3 },
 		]
 	}
 
