@@ -1,13 +1,14 @@
 import React from 'react'
-import { Grid } from 'styled-css-grid'
 
 import Header from './Header.js'
+import EmojiSelection from './EmojiSelection.js'
 
 class Home extends React.Component {
 	render () {
 		return (
 			<div>
 				<Header />
+				<EmojiSelection />
 			</div>
 		)
 	}
