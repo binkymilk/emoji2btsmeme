@@ -2,31 +2,43 @@ import React from 'react'
 import { Grid, Cell } from 'styled-css-grid'
 import Gallery from 'react-photo-gallery'
 
+import ImageService from './ImageService';
+const imageService = new ImageService();
+
 var photos = []
+var images
 
 class PhotoGallery extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.importAll = this.importAll.bind(this)
+		this.state = {
+			memes: []
+		}
 
-		const images = this.importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/))
+		this.importAllPhotos = this.importAllPhotos.bind(this)
+		this.buildPhotoGallery = this.buildPhotoGallery.bind(this)
 
-		photos = [
-			{ src: images['images.jpeg'], width: 5, height: 3 },
-			{ src: images['IMG_20190114_113616.jpg'], width: 5, height: 3 },
-			{ src: images['IMG_20190114_223111.jpg'], width: 2, height: 2 },
-			{ src: images['IMG_20190115_190845.jpg'], width: 4.5, height: 3 },
-			{ src: images['IMG_20190116_072947.jpg'], width: 4.5, height: 3 },
-			{ src: images['IMG_20190117_221716.jpg'], width: 2.25, height: 2 },
-			{ src: images['IMG_20190118_012120.jpg'], width: 2, height: 2 },
-			{ src: images['IMG_20190118_165806.jpg'], width: 2, height: 2 },
-			{ src: images['IMG_20190119_113138.jpg'], width: 2, height: 2 },
-			{ src: images['IMG_20190120_003906.jpg'], width: 3.5, height: 3 },
-		]
+		images = this.importAllPhotos(require.context('./images', false, /\.(png|jpe?g|svg)$/))
 	}
 
-	importAll(r) {
+	buildPhotoGallery() {
+		this.state.memes.forEach(meme => {
+			photos.push({
+				src: images[meme.title],
+				width: meme.width,
+				height: meme.height
+			})
+		})
+	}
+
+	componentDidMount() {
+		imageService.getImages().then((result) => {
+			this.setState({ memes: result.data }, this.buildPhotoGallery)
+		})
+	}
+
+	importAllPhotos(r) {
 		let images = {};
   	r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
   	return images;
