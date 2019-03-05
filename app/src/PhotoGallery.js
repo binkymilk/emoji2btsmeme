@@ -2,9 +2,6 @@ import React from 'react'
 import { Grid, Cell } from 'styled-css-grid'
 import Gallery from 'react-photo-gallery'
 
-import * as u from './utils.js'
-
-var photos = []
 var images
 
 class PhotoGallery extends React.Component {
@@ -12,29 +9,26 @@ class PhotoGallery extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			memes: []
+			photos: []
 		}
-
 		this.importAllPhotos = this.importAllPhotos.bind(this)
-		this.buildPhotoGallery = this.buildPhotoGallery.bind(this)
 
 		images = this.importAllPhotos(require.context('./images', false, /\.(png|jpe?g|svg)$/))
 	}
 
-	buildPhotoGallery() {
-		this.state.memes.forEach(meme => {
-			photos.push({
-				src: images[meme.title],
-				width: meme.width,
-				height: meme.height
-			})
-		})
-	}
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.memes !== this.props.memes) {
+			var photos = []
 
-	componentDidMount() {
-		u.getImages().then((result) => {
-			this.setState({ memes: result.data }, this.buildPhotoGallery)
-		})
+			this.props.memes.forEach(meme => {
+				photos.push({
+					src: images[meme.title],
+					width: parseFloat(meme.width),
+					height: parseFloat(meme.height)
+				})
+			})
+			this.setState({ photos: photos })
+		}
 	}
 
 	importAllPhotos(r) {
@@ -49,7 +43,7 @@ class PhotoGallery extends React.Component {
 				<Cell width={1} />
 				<Cell width={10}>
 					<p>Choose a meme...</p>
-					<Gallery photos={photos} />
+					<Gallery photos={this.state.photos} />
 				</Cell>
 				<Cell width={1} />
 			</Grid>

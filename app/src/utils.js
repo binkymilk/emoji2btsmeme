@@ -1,8 +1,15 @@
 import axios from 'axios'
 const API_URL = 'http://localhost:8000'
 
-export function getImages() {
+export function getAllImages() {
   const url =  `${API_URL}/api/memes/`
+  return axios
+    .get(url)
+    .then(response => response.data)
+}
+
+export function getImages(emojiName) {
+  const url =  `${API_URL}/api/memes/${emojiName}/`
   return axios
     .get(url)
     .then(response => response.data)

@@ -19,7 +19,7 @@ class EmojiSelection extends React.Component {
     })
   }
 
-  render () {
+  render() {
     return (
       <Grid columns={12} className={this.props.className}>
         <Cell width={1} />
@@ -27,7 +27,13 @@ class EmojiSelection extends React.Component {
           <p>Select an emoji...</p>
           <div>
           {this.state.emojis.map((emoji, i) => (
-            <i className={`em em-${emoji.name}`} key={i} />
+            <button
+              className='emoji-btn'
+              onClick={() => this.props.fetchImages(emoji.name)}
+              key={i}
+            >
+              <i className={`em em-${emoji.name}`} />
+            </button>
           ))}
           </div>
         </Cell>
@@ -42,5 +48,9 @@ export default styled(EmojiSelection)`
     width: 70px;
     height: 70px;
     background-size: 50px 50px;
+  }
+  .emoji-btn {
+    border: none;
+    background-color: rgba(255,255,255,0);
   }
 `
