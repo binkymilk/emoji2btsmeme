@@ -2,8 +2,7 @@ import React from 'react'
 import { Grid, Cell } from 'styled-css-grid'
 import Gallery from 'react-photo-gallery'
 
-import ImageService from './ImageService';
-const imageService = new ImageService();
+import * as u from './utils.js'
 
 var photos = []
 var images
@@ -33,7 +32,7 @@ class PhotoGallery extends React.Component {
 	}
 
 	componentDidMount() {
-		imageService.getImages().then((result) => {
+		u.getImages().then((result) => {
 			this.setState({ memes: result.data }, this.buildPhotoGallery)
 		})
 	}

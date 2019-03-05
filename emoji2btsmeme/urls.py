@@ -20,5 +20,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api/memes/$', views.image_list)
+    url(r'^api/memes/$', views.image_list),
+    url(r'^api/emojis/$', views.emoji_list)
 ]
