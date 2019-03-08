@@ -23,9 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2kl(%=ay_h%lcrv^ati9hraz#u9bjghj_)t0vk#zss0tzae83a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
@@ -57,6 +60,9 @@ CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
+    'localhost',
+    'localhost:80',
+    '127.0.0.1:80'
 )
 
 ROOT_URLCONF = 'emoji2btsmeme.urls'
